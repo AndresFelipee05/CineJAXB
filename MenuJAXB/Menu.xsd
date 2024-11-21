@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+
+    <!-- Elemento raíz -->
+    <xs:element name="menu">
+        <xs:complexType>
+            <xs:sequence>
+                <!-- El elemento 'plato' puede repetirse múltiples veces -->
+                <xs:element name="plato" maxOccurs="unbounded" type="Plato"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- Definición del tipo 'Plato' -->
+    <xs:complexType name="Plato">
+        <xs:sequence>
+            <xs:element name="nombre" type="xs:string"/>
+            <xs:element name="precio">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:pattern value="\$\d+(\.\d{2})?"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="descripcion" type="xs:string"/>
+            <xs:element name="calorias" type="xs:int"/>
+        </xs:sequence>
+    </xs:complexType>
+
+</xs:schema>
